@@ -6,4 +6,8 @@
     .form-control {
         @apply border-b-2 border-b-slate-200 px-2 py-1 outline-none transition-colors font-subHeading valid:border-b-green-400 invalid:focus:border-b-red-400 w-full
     }
+
+    .form-submit-btn {
+        @apply bg-[#21aee3] hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors
+    }
 }

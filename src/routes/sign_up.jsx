@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form } from 'react-router-dom';
 import SignUpSvg from '../assets/sign-up-svg.svg';
 
-function SignUp({ type }) {
+function SignUp() {
   return (
     <div className='bg-[#f5f9fa] w-full min-h-screen grid place-items-center px-4 sm:px-8 py-8'>
-    <div className='hidden sm:block absolute bottom-1 left-1 z-0 w-[clamp(250px,_25%,_25%)]'>
+      <div className='hidden sm:block absolute bottom-1 left-1 z-0 w-[clamp(250px,_25%,_25%)]'>
         <img src={SignUpSvg} alt='' className='w-full' />
       </div>
       <div className='w-full sm:w-max z-10'>
@@ -42,48 +41,48 @@ function SignUp({ type }) {
               />
             </div>
             <input
-                type='text'
-                name='companyName'
-                className='form-control'
-                id='companyName'
-                placeholder='Company name'
-                required
-              />
+              type='text'
+              name='companyName'
+              className='form-control'
+              id='companyName'
+              placeholder='Company name'
+              required
+            />
             <input
-                type='email'
-                className='form-control'
-                name='email'
-                id='email'
-                placeholder='Email'
-                required
-              />
-              <input
-                type='password'
-                name='password'
-                className='form-control'
-                id='password'
-                minLength="6"
-                placeholder='Password (min 6 characters)'
-                required
-              />
-              <input
-                type='password'
-                name='confirm_password'
-                className='form-control'
-                id='confirm_password'
-                minLength="6"
-                placeholder='Confirm Password'
-                required
-              />
+              type='email'
+              className='form-control'
+              name='email'
+              id='email'
+              placeholder='Email'
+              required
+            />
+            <input
+              type='password'
+              name='password'
+              className='form-control'
+              id='password'
+              minLength='6'
+              placeholder='Password (min 6 characters)'
+              required
+            />
+            <input
+              type='password'
+              name='confirm_password'
+              className='form-control'
+              id='confirm_password'
+              minLength='6'
+              placeholder='Confirm Password'
+              required
+            />
             <button
               type='submit'
-              className='bg-[#21aee3] hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors'
+              className='form-submit-btn'
             >
               Continue
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Already have an account?&nbsp;
-              <a href={`/login/${type}`} className='text-blue-500'>
+              <a href='login' className='text-blue-500'>
                 Sign in
               </a>
             </h3>
@@ -95,7 +94,3 @@ function SignUp({ type }) {
 }
 
 export default SignUp;
-
-SignUp.propTypes = {
-    type: PropTypes.string,
-}

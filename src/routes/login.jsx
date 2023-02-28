@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Form } from 'react-router-dom';
 import LoginSvg from '../assets/login_svg.svg';
-
-function Login(props) {
-  const { type } = props;
+function Login() {
   return (
     <div className='bg-[#f5f9fa] w-full min-h-screen grid place-items-center px-4 sm:px-8 py-8'>
       <div className='hidden sm:block absolute bottom-0 left-0 z-0 w-[clamp(250px,_25%,_25%)]'>
@@ -52,20 +49,20 @@ function Login(props) {
               </label>
             </div>
             <a
-              href='/forgot-password'
+              href='forgotPassword'
               className='w-max justify-self-end text-right text-sm font-subHeading text-slate-500'
             >
               Forgot Password
             </a>
             <button
               type='submit'
-              className='bg-[#21aee3] hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors'
+              className='form-submit-btn'
             >
               Continue
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Don&#39;t have an account?&nbsp;
-              <a href={`/sign-up/${type}`} className='text-blue-500'>
+              <a href='sign-up' className='text-blue-500'>
                 Sign up
               </a>
             </h3>
@@ -77,7 +74,3 @@ function Login(props) {
 }
 
 export default Login;
-
-Login.propTypes = {
-  type: PropTypes.string,
-}
