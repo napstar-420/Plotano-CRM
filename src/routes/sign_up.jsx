@@ -82,7 +82,7 @@ function SignUp() {
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Already have an account?&nbsp;
-              <a href='login' className='text-blue-500'>
+              <a href='login' className='text-mainBlue'>
                 Sign in
               </a>
             </h3>

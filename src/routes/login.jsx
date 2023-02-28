@@ -62,7 +62,7 @@ function Login() {
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Don&#39;t have an account?&nbsp;
-              <a href='sign-up' className='text-blue-500'>
+              <a href='sign-up' className='text-mainBlue'>
                 Sign up
               </a>
             </h3>

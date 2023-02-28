@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        mainBlue: '#21aee3',
+      },
       fontFamily: {
         heading: ['Poppins', 'sans-serif'],
         subHeading: ['Montserrat', 'sans-serif'],

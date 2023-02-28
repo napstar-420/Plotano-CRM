@@ -25,7 +25,7 @@ function ForgotPassword() {
             </div>
             <input type="email" name='email' id='email' required placeholder='Email' className='form-control'/>
             <button type="submit" className='form-submit-btn'>Forgot Password</button>
-            <a href='login' className="text-sm font-subHeading text-blue-500 text-center">Back to login page</a>
+            <a href='login' className="text-sm font-subHeading text-mainBlue text-center">Back to login page</a>
           </Form>
         </div>
       </div>

@@ -8,6 +8,6 @@
     }
 
     .form-submit-btn {
-        @apply bg-[#21aee3] hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors
+        @apply bg-mainBlue hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors
     }
 }
