@@ -3,11 +3,49 @@
 @tailwind utilities;
 
 @layer components {
+
+    /* Login Sign up classes */
     .form-control {
-        @apply border-b-2 border-b-slate-200 px-2 py-1 outline-none transition-colors font-subHeading valid:border-b-green-400 invalid:focus:border-b-red-400 w-full
+        @apply border-b-2 border-b-slate-200 px-2 py-1 outline-none transition-colors font-subHeading focus:border-b-slate-700
+    }
+
+    .form-control:invalid:not(.form-control:placeholder-shown) {
+        @apply border-b-red-400
+    }
+
+    .form-control:valid {
+        @apply border-b-green-400
     }
 
     .form-submit-btn {
         @apply bg-mainBlue hover:bg-[#1395c4] outline-offset-2 focus:outline-blue-300 text-white text-lg font-subHeading py-1 px-4 rounded transition-colors
     }
+
+    /* Header Classes */
+
+    .toggle-side-nav-btn {
+        @apply flex flex-col items-start justify-between w-6 h-5 cursor-pointer;
+    }
+
+    .header-icon {
+        @apply p-3 flex items-center justify-center hover:bg-slate-100 active:bg-slate-200 cursor-pointer transition-colors;
+    }
+
+    /*   SIDE NAV CLASSES   */
+
+    .side-nav-link {
+        @apply flex items-center py-2 px-8 hover:bg-slate-100 transition-all cursor-pointer select-none;
+    }
+        .nav-icon {
+            @apply text-xl
+        }
+        .side-nav-link > h2 {
+            @apply ml-4 font-subHeading self-end;
+        }
+        .side-nav-link.active {
+            @apply border-l-4 border-l-mainBlue bg-blue-100 text-mainBlue font-semibold;
+        }
+        .side-nav-link.pending {
+            @apply bg-slate-100
+        }
 }

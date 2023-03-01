@@ -20,7 +20,8 @@ const router = createBrowserRouter(
     <Route path='/' errorElement={<ErrorPage />}>
       <Route index element={<Root />}/>
       <Route path='admin' element={<AdminRoot />}>
-        <Route index element={<Dashboard />}/>
+          <Route index element={<Dashboard />} />
+          <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}
       <Route path='admin'>

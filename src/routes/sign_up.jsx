@@ -11,7 +11,7 @@ function SignUp({ type }) {
       </div>
       <div className='w-full sm:w-max z-10'>
         <div className='text-center mb-8'>
-          <h1 className='font-heading text-2xl font-bold text-slate-700 tracking-[0.5rem]'>
+          <h1 className='font-heading text-2xl font-semibold text-slate-700 tracking-[0.5rem]'>
             PLOTANO
           </h1>
           <p className='font-subHeading tracking-[0.4rem] text-slate-700 text-xs relative right-1 font-semibold'>
