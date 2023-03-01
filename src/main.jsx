@@ -32,7 +32,7 @@ const router = createBrowserRouter(
       <Route path='client'>
         <Route path='login' element={<Login type={'client'}/>}/>
         <Route path='sign-up' element={<SignUp type={'client'}/>}/>
-        <Route path='forgotPassword' element={<ForgotPassword type={'clint'}/>}/>
+        <Route path='forgotPassword' element={<ForgotPassword type={'client'}/>}/>
       </Route>
       <Route path='staff'>
         <Route path='login' element={<Login type={'staff'}/>}/>
