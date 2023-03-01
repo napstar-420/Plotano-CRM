@@ -8,15 +8,21 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import Root from './routes/root.jsx';
+import ErrorPage from './errorPage.jsx';
 import Login from './routes/login.jsx';
 import SignUp from './routes/sign_up.jsx';
-import ForgotPassword from './routes/forgotPassword.jsx'
-import ErrorPage from './errorPage.jsx';
+import ForgotPassword from './routes/forgotPassword.jsx';
+import AdminRoot from './routes/admin/root.jsx';
+import Dashboard from './routes/admin/dashboard.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' errorElement={<ErrorPage />}>
       <Route index element={<Root />}/>
+      <Route path='admin' element={<AdminRoot />}>
+        <Route index element={<Dashboard />}/>
+      </Route>
+      {/* Authentication Routes */}
       <Route path='admin'>
         <Route path='login' element={<Login type={'admin'}/>} />
         <Route path='sign-up' element={<SignUp type={'admin'}/>} />

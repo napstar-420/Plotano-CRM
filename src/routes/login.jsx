@@ -1,7 +1,9 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import { Form, Link } from 'react-router-dom';
 import LoginSvg from '../assets/login_svg.svg';
-function Login() {
+
+function Login({ type }) {
   return (
     <div className='bg-[#f5f9fa] w-full min-h-screen grid place-items-center px-4 sm:px-8 py-8'>
       <div className='hidden sm:block absolute bottom-0 left-0 z-0 w-[clamp(250px,_25%,_25%)]'>
@@ -48,12 +50,12 @@ function Login() {
                 Remember me
               </label>
             </div>
-            <a
-              href='forgotPassword'
+            <Link
+              to={`/${type}/forgotPassword`}
               className='w-max justify-self-end text-right text-sm font-subHeading text-slate-500'
             >
               Forgot Password
-            </a>
+            </Link>
             <button
               type='submit'
               className='form-submit-btn'
@@ -62,9 +64,9 @@ function Login() {
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Don&#39;t have an account?&nbsp;
-              <a href='sign-up' className='text-mainBlue'>
+              <Link to={`/${type}/sign-up`} className='text-mainBlue'>
                 Sign up
-              </a>
+              </Link>
             </h3>
           </Form>
         </div>
@@ -74,3 +76,7 @@ function Login() {
 }
 
 export default Login;
+
+Login.propTypes = {
+  type: PropTypes.string,
+}

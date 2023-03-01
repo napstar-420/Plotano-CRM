@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Form, Link } from 'react-router-dom';
 
-function ForgotPassword() {
+function ForgotPassword({ type }) {
   return (
     <div className='bg-[#f5f9fa] w-full min-h-screen grid place-items-center px-4 sm:px-8 py-8'>
       <div className='w-full sm:w-max z-10'>
@@ -25,7 +26,7 @@ function ForgotPassword() {
             </div>
             <input type="email" name='email' id='email' required placeholder='Email' className='form-control'/>
             <button type="submit" className='form-submit-btn'>Forgot Password</button>
-            <a href='login' className="text-sm font-subHeading text-mainBlue text-center">Back to login page</a>
+            <Link to={`/${type}/login`} className="text-sm font-subHeading text-mainBlue text-center">Back to login page</Link>
           </Form>
         </div>
       </div>
@@ -34,3 +35,7 @@ function ForgotPassword() {
 }
 
 export default ForgotPassword;
+
+ForgotPassword.propTypes = {
+  type: PropTypes.string,
+}

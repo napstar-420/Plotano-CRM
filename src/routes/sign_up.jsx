@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Form, Link } from 'react-router-dom';
 import SignUpSvg from '../assets/sign-up-svg.svg';
 
-function SignUp() {
+function SignUp({ type }) {
   return (
     <div className='bg-[#f5f9fa] w-full min-h-screen grid place-items-center px-4 sm:px-8 py-8'>
       <div className='hidden sm:block absolute bottom-1 left-1 z-0 w-[clamp(250px,_25%,_25%)]'>
@@ -82,9 +83,9 @@ function SignUp() {
             </button>
             <h3 className='text-center text-sm font-subHeading text-slate-500'>
               Already have an account?&nbsp;
-              <a href='login' className='text-mainBlue'>
+              <Link to={`/${type}/login`} className='text-mainBlue'>
                 Sign in
-              </a>
+              </Link>
             </h3>
           </Form>
         </div>
@@ -94,3 +95,7 @@ function SignUp() {
 }
 
 export default SignUp;
+
+SignUp.propTypes = {
+  type: PropTypes.string,
+}
