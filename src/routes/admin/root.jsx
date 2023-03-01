@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from '../../assets/logo.png';
 import { Outlet, NavLink } from 'react-router-dom';
 import {
@@ -13,9 +14,9 @@ import {
 import { IoMdStopwatch } from 'react-icons/io';
 import { IoSettingsOutline, IoHomeOutline } from 'react-icons/io5';
 import { MdOutlineAddToPhotos } from 'react-icons/md';
-import { CiSquareMore } from 'react-icons/ci';
-import { GrTask } from 'react-icons/gr';
+import { CgMoreVerticalO } from 'react-icons/cg';
 import { FiFolder, FiLayers } from 'react-icons/fi';
+import { BiListUl } from 'react-icons/bi';
 
 function Root() {
   return (
@@ -57,19 +58,19 @@ function AdminHeader() {
       </div>
       <div className='flex'>
         <div className='header-icon'>
-          <BsBell className='text-2xl text-slate-600' />
+          <BsBell className='text-2xl text-slate-400' />
         </div>
         <div className='header-icon'>
-          <IoMdStopwatch className='text-2xl text-slate-600' />
+          <IoMdStopwatch className='text-2xl text-slate-400' />
         </div>
         <div className='header-icon'>
-          <IoSettingsOutline className='text-2xl text-slate-600' />
+          <IoSettingsOutline className='text-2xl text-slate-400' />
         </div>
         <div className='header-icon'>
           <MdOutlineAddToPhotos className='text-2xl text-red-600' />
         </div>
         <div className='header-icon'>
-          <BsGlobe className='text-2xl text-slate-600' />
+          <BsGlobe className='text-2xl text-slate-400' />
         </div>
         <div className='header-icon'>
           <img
@@ -77,7 +78,7 @@ function AdminHeader() {
             src='https://cdn-icons-png.flaticon.com/512/219/219983.png'
             alt=''
           />
-          <h4 className='select-none font-subHeading text-slate-600 ml-2'>
+          <h4 className='select-none font-subHeading text-slate-400 ml-2'>
             Admin
           </h4>
         </div>
@@ -86,142 +87,46 @@ function AdminHeader() {
   );
 }
 
+function SideNavLink({to, name, Icon}) {
+  const link = 'flex items-center py-2 px-8 hover:bg-slate-100 text-slate-500 transition-all cursor-pointer select-none';
+  const active = 'flex items-center py-2 px-8 transition-all cursor-pointer select-none border-r-4 border-r-mainBlue bg-blue-100 text-mainBlue font-semibold';
+  const pending = 'flex items-center py-2 px-8 transition-all cursor-pointer select-none bg-slate-100';
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive, isPending }) =>
+        isActive
+          ? active
+          : isPending
+          ? pending
+          : link
+      }
+    >
+      <Icon className='text-xl' />
+      <h2 className='ml-4 font-subHeading self-end'>{name}</h2>
+    </NavLink>
+  )
+}
+
+SideNavLink.propTypes = {
+  to: PropTypes.string,
+  name: PropTypes.string,
+  Icon: PropTypes.func
+}
+
 function AdminSideNav() {
   return (
     <nav id='side-nav' className='border-r-4 border-r-slate-100 pt-4'>
-      <NavLink
-        to={'/admin/'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <IoHomeOutline className='nav-icon' />
-        <h2>Dashboard</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/customers'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <BsPeople className='nav-icon' />
-        <h2>Customers</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/projects'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <FiFolder className='nav-icon' />
-        <h2>Projects</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/tasks'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <GrTask className='nav-icon' />
-        <h2>Tasks</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/leads'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <BsTelephoneInbound className='nav-icon' />
-        <h2>Leads</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/sales'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <BsWallet2 className='nav-icon' />
-        <h2>Sales</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/subscriptions'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <FiLayers className='nav-icon' />
-        <h2>Subscriptions</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/support'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <BsChatLeftText className='nav-icon' />
-        <h2>Support</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/knowledge-base'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <BsFiles className='nav-icon' />
-        <h2>Knowledge base</h2>
-      </NavLink>
-      <NavLink
-        to={'/admin/others'}
-        className={({ isActive, isPending }) =>
-          isActive
-            ? 'side-nav-link active'
-            : isPending
-            ? 'side-nav-link pending'
-            : 'side-nav-link'
-        }
-      >
-        <CiSquareMore className='nav-icon' />
-        <h2>Other</h2>
-      </NavLink>
-      <div>
-        <h2></h2>
-      </div>
+      <SideNavLink to={'/admin/'} name={'Dashboard'} Icon={IoHomeOutline}/>
+      <SideNavLink to={'/admin/customers'} name={'Customers'} Icon={BsPeople}/>
+      <SideNavLink to={'/admin/projects'} name={'Projects'} Icon={FiFolder}/>
+      <SideNavLink to={'/admin/tasks'} name={'Tasks'} Icon={BiListUl}/>
+      <SideNavLink to={'/admin/leads'} name={'Leads'} Icon={BsTelephoneInbound}/>
+      <SideNavLink to={'/admin/sales'} name={'Sales'} Icon={BsWallet2}/>
+      <SideNavLink to={'/admin/subscriptions'} name={'Subsriptions'} Icon={FiLayers}/>
+      <SideNavLink to={'/admin/support'} name={'Support'} Icon={BsChatLeftText}/>
+      <SideNavLink to={'/admin/knowledge-base'} name={'Knowledge Base'} Icon={BsFiles}/>
+      <SideNavLink to={'/admin/other'} name={'Other'} Icon={CgMoreVerticalO}/>
     </nav>
   );
 }

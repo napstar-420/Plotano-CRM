@@ -30,22 +30,4 @@
     .header-icon {
         @apply p-3 flex items-center justify-center hover:bg-slate-100 active:bg-slate-200 cursor-pointer transition-colors;
     }
-
-    /*   SIDE NAV CLASSES   */
-
-    .side-nav-link {
-        @apply flex items-center py-2 px-8 hover:bg-slate-100 transition-all cursor-pointer select-none;
-    }
-        .nav-icon {
-            @apply text-xl
-        }
-        .side-nav-link > h2 {
-            @apply ml-4 font-subHeading self-end;
-        }
-        .side-nav-link.active {
-            @apply border-l-4 border-l-mainBlue bg-blue-100 text-mainBlue font-semibold;
-        }
-        .side-nav-link.pending {
-            @apply bg-slate-100
-        }
 }
