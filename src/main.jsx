@@ -13,14 +13,18 @@ import Login from './routes/login.jsx';
 import SignUp from './routes/sign_up.jsx';
 import ForgotPassword from './routes/forgotPassword.jsx';
 import AdminRoot from './routes/admin/root.jsx';
-import Dashboard from './routes/admin/dashboard.jsx';
+import AdminDashboard from './routes/admin/dashboard.jsx';
+import AdminCustomers from './routes/admin/customers.jsx';
+import AdminTasks from './routes/admin/tasks.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' errorElement={<ErrorPage />}>
       <Route index element={<Root />}/>
       <Route path='admin' element={<AdminRoot />}>
-          <Route index element={<Dashboard />} />
+          <Route index element={<AdminDashboard />} />
+          <Route path='customers' element={<AdminCustomers />} />
+          <Route path='tasks' element={<AdminTasks />} />
           <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}
