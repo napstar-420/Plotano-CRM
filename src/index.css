@@ -31,3 +31,8 @@
         @apply p-3 flex items-center justify-center hover:bg-slate-100 active:bg-slate-200 cursor-pointer transition-colors;
     }
 }
+
+.chart-container .google-visualization-tooltip {
+    font-size: 14px;
+    color: purple;
+} 
