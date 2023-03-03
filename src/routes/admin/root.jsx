@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import logo from '../../assets/logo.png';
 import { Outlet, NavLink } from 'react-router-dom';
@@ -10,10 +10,11 @@ import {
   BsWallet2,
   BsChatLeftText,
   BsFiles,
+  BsDot
 } from 'react-icons/bs';
 import { IoMdStopwatch } from 'react-icons/io';
 import { IoSettingsOutline, IoHomeOutline } from 'react-icons/io5';
-import { MdOutlineAddToPhotos } from 'react-icons/md';
+import { MdExpandMore, MdOutlineAddToPhotos } from 'react-icons/md';
 import { CgMoreVerticalO } from 'react-icons/cg';
 import { FiFolder, FiLayers } from 'react-icons/fi';
 import { BiListUl } from 'react-icons/bi';
@@ -23,7 +24,7 @@ function Root() {
     <div className='w-full h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]'>
       <div
         id='plotano-logo'
-        className='py-2 pl-4 pr-8 border-r-4 border-r-slate-100 border-b-4 border-b-slate-100 flex items-center justify-center'
+        className='py-2 pl-4 pr-8 border-r-2 border-r-slate-300 border-b-2 border-2-slate-300 flex items-center justify-center'
       >
         <div className='w-6 mr-4'>
           <img className='w-full' src={logo} alt='' />
@@ -48,7 +49,7 @@ export default Root;
 
 function AdminHeader() {
   return (
-    <div id='admin-header' className='flex border-b-4 border-b-slate-100'>
+    <div id='admin-header' className='flex border-b-2 border-b-slate-200'>
       <div className='flex-1 flex items-center justify-start p-2'>
         <div className='toggle-side-nav-btn'>
           <div className='w-full h-[3px] bg-slate-500'></div>
@@ -87,46 +88,188 @@ function AdminHeader() {
   );
 }
 
-function SideNavLink({to, name, Icon}) {
-  const link = 'flex items-center py-2 px-8 hover:bg-slate-100 text-slate-500 transition-all cursor-pointer select-none';
-  const active = 'flex items-center py-2 px-8 transition-all cursor-pointer select-none border-r-4 border-r-mainBlue bg-blue-100 text-mainBlue font-semibold';
-  const pending = 'flex items-center py-2 px-8 transition-all cursor-pointer select-none bg-slate-100';
+function SideNavLink({ to, name, Icon, setExpand = (name) => console.log(name) }) {
   return (
     <NavLink
       to={to}
-      className={({ isActive, isPending }) =>
-        isActive
-          ? active
-          : isPending
-          ? pending
-          : link
-      }
+      onClick={() => setExpand(name)}
+      className={({ isActive, isPending }) => {
+        return `flex items-center py-2 px-8 ${
+          isActive
+            ? 'bg-blue-100 border-r-2 border-r-mainBlue text-mainBlue'
+            : isPending
+            ? 'bg-slate-100 text-slate-500'
+            : 'hover:bg-slate-100 text-slate-500'
+        } transition-all cursor-pointer select-none`;
+      }}
     >
       <Icon className='text-xl' />
       <h2 className='ml-4 font-subHeading self-end'>{name}</h2>
     </NavLink>
-  )
+  );
 }
 
 SideNavLink.propTypes = {
   to: PropTypes.string,
   name: PropTypes.string,
-  Icon: PropTypes.func
-}
+  Icon: PropTypes.func,
+  childRoutes: PropTypes.array,
+  setExpand: PropTypes.func,
+};
 
 function AdminSideNav() {
+  const [expand, setExpand] = useState('null');
+  const customerChildRoutes = [
+    {
+      name: 'Clients',
+      route: '/admin/customers',
+    },
+    {
+      name: 'Users',
+      route: '/admin/customers-users',
+    },
+  ];
+  const projectsChildRoutes = [
+    {
+      name: 'Projects',
+      route: '/admin/projects',
+    },
+    {
+      name: 'Templates',
+      route: '/admin/project-template',
+    },
+  ];
   return (
-    <nav id='side-nav' className='border-r-4 border-r-slate-100 pt-4'>
-      <SideNavLink to={'/admin/'} name={'Dashboard'} Icon={IoHomeOutline}/>
-      <SideNavLink to={'/admin/customers'} name={'Customers'} Icon={BsPeople}/>
-      <SideNavLink to={'/admin/projects'} name={'Projects'} Icon={FiFolder}/>
-      <SideNavLink to={'/admin/tasks'} name={'Tasks'} Icon={BiListUl}/>
-      <SideNavLink to={'/admin/leads'} name={'Leads'} Icon={BsTelephoneInbound}/>
-      <SideNavLink to={'/admin/sales'} name={'Sales'} Icon={BsWallet2}/>
-      <SideNavLink to={'/admin/subscriptions'} name={'Subsriptions'} Icon={FiLayers}/>
-      <SideNavLink to={'/admin/support'} name={'Support'} Icon={BsChatLeftText}/>
-      <SideNavLink to={'/admin/knowledge-base'} name={'Knowledge Base'} Icon={BsFiles}/>
-      <SideNavLink to={'/admin/other'} name={'Other'} Icon={CgMoreVerticalO}/>
+    <nav id='side-nav' className='border-r-2 border-r-slate-200 pt-4'>
+      {/* DASHBOARD */}
+      <SideNavLink
+        to={'/admin/'}
+        name={'Dashboard'}
+        Icon={IoHomeOutline}
+        setExpand={setExpand}
+      />
+      {/* Customers */}
+      <div className='grid'>
+        <div
+          onClick={() => expand === 'Customers' ? setExpand('null') : setExpand('Customers')}
+          className={`flex items-center w-full py-2 pl-8 pr-2 transition-all cursor-pointer select-none hover:bg-slate-100 text-slate-500`}
+        >
+          <BsPeople className='text-xl' />
+          <h2 className='ml-4 grow font-subHeading self-end'>Customers</h2>
+          <MdExpandMore className={`transition-transform ${expand === 'Customers' ? '' : '-rotate-90'}`}/>
+        </div>
+        <div
+          className={`grid overflow-hidden transition-all duration-500 ${
+            expand === 'Customers' ? 'max-h-28' : 'max-h-0'
+          }`}
+        >
+          {customerChildRoutes.map((child, index) => {
+            return (
+              <NavLink
+                to={child.route}
+                key={index}
+                className={({ isActive, isPending }) => {
+                  return `flex items-center text-sm py-2 pl-8 pr-2 ${
+                    isActive
+                      ? 'bg-blue-100 border-r-2 border-r-mainBlue text-mainBlue'
+                      : isPending
+                      ? 'bg-slate-100 text-slate-500'
+                      : 'hover:bg-slate-100 text-slate-500'
+                  } transition-all cursor-pointer select-none`;
+                }}
+              >
+                <BsDot className='text-xl'/>
+                <h2 className='ml-4 font-subHeading self-end'>{child.name}</h2>
+              </NavLink>
+            );
+          })}
+        </div>
+      </div>
+      {/* PROJECTS */}
+      <div className='grid'>
+        <div
+          onClick={() => expand === 'Projects' ? setExpand('null') : setExpand('Projects')}
+          className={`flex items-center w-full py-2 pl-8 pr-2 transition-all cursor-pointer select-none hover:bg-slate-100 text-slate-500`}
+        >
+          <FiFolder className='text-xl' />
+          <h2 className='ml-4 grow font-subHeading self-end'>Projects</h2>
+          <MdExpandMore className={`transition-transform ${expand === 'Projects' ? '' : '-rotate-90'}`}/>
+        </div>
+        <div
+          className={`grid overflow-hidden transition-all duration-500 ${
+            expand === 'Projects' ? 'max-h-28' : 'max-h-0'
+          }`}
+        >
+          {projectsChildRoutes.map((child, index) => {
+            return (
+              <NavLink
+                to={child.route}
+                key={index}
+                className={({ isActive, isPending }) => {
+                  return `flex items-center text-sm py-2 pl-8 pr-2 ${
+                    isActive
+                      ? 'bg-blue-100 border-r-2 border-r-mainBlue text-mainBlue'
+                      : isPending
+                      ? 'bg-slate-100 text-slate-500'
+                      : 'hover:bg-slate-100 text-slate-500'
+                  } transition-all cursor-pointer select-none`;
+                }}
+              >
+                <BsDot className='text-xl'/>
+                <h2 className='ml-4 font-subHeading self-end'>{child.name}</h2>
+              </NavLink>
+            );
+          })}
+        </div>
+      </div>
+      {/* TASKS */}
+      <SideNavLink
+        to={'/admin/tasks'}
+        name={'Tasks'}
+        Icon={BiListUl}
+        setExpand={setExpand}
+      />
+      {/* LEADS */}
+      <SideNavLink
+        to={'/admin/leads'}
+        name={'Leads'}
+        Icon={BsTelephoneInbound}
+      />
+      {/* SALES */}
+      <SideNavLink
+        to={'/admin/sales'}
+        name={'Sales'}
+        Icon={BsWallet2}
+        setExpand={setExpand}
+      />
+      {/* SUBSCRIPTIONS */}
+      <SideNavLink
+        to={'/admin/subscriptions'}
+        name={'Subsriptions'}
+        Icon={FiLayers}
+        setExpand={setExpand}
+      />
+      {/* SUPPORT */}
+      <SideNavLink
+        to={'/admin/support'}
+        name={'Support'}
+        Icon={BsChatLeftText}
+        setExpand={setExpand}
+      />
+      {/* KNOWLEDGE BASE */}
+      <SideNavLink
+        to={'/admin/knowledge-base'}
+        name={'Knowledge Base'}
+        Icon={BsFiles}
+        setExpand={setExpand}
+      />
+      {/* OTHERS */}
+      <SideNavLink
+        to={'/admin/other'}
+        name={'Other'}
+        Icon={CgMoreVerticalO}
+        setExpand={setExpand}
+      />
     </nav>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react'
+import { redirect } from 'react-router-dom'
 
 function Customers() {
+  redirect('/admin/customers/clients');
   return (
-    <div className='w-full h-full bg-lightBlue'>
-      Customers
-    </div>
+    <div>Please wait</div>
   )
 }
 
