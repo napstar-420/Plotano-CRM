@@ -24,7 +24,7 @@ function Root() {
     <div className='w-full h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]'>
       <div
         id='plotano-logo'
-        className='py-2 pl-4 pr-8 border-r-2 border-r-slate-300 border-b-2 border-2-slate-300 flex items-center justify-center'
+        className='py-2 pl-8 pr-16 border-r-2 border-r-slate-300 border-b-2 border-2-slate-300 flex items-center justify-center'
       >
         <div className='w-6 mr-4'>
           <img className='w-full' src={logo} alt='' />
@@ -314,7 +314,7 @@ function AdminSideNav() {
       />
       {/* KNOWLEDGE BASE */}
       <SideNavLink
-        to={'/admin/knowledge-base'}
+        to={'/admin/knowledgeBase'}
         name={'Knowledge Base'}
         Icon={BsFiles}
         setExpand={setExpand}
