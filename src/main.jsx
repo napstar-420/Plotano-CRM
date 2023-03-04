@@ -27,6 +27,7 @@ import AdminProducts from './routes/admin/products.jsx';
 import AdminExpenses from './routes/admin/expenses.jsx';
 import AdminProposals from './routes/admin/proposals.jsx';
 import AdminSubscriptions from './routes/admin/subscriptions.jsx';
+import AdminSupport from './routes/admin/support.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
         <Route path='expenses' element={<AdminExpenses />} />
         <Route path='proposals' element={<AdminProposals />} />
         <Route path='subscriptions' element={<AdminSubscriptions />}/>
+        <Route path='support' element={<AdminSupport />}/>
         <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}
