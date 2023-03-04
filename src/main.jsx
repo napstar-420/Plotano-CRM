@@ -19,6 +19,7 @@ import AdminCustomerUsers from './routes/admin/customerUsers.jsx';
 import AdminProjects from './routes/admin/projects.jsx';
 import AdminProjectTemplate from './routes/admin/projectTemplate.jsx';
 import AdminTasks from './routes/admin/tasks.jsx';
+import AdminLeads from './routes/admin/leads.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
         <Route path='projects' element={<AdminProjects />}/>
         <Route path='project-template' element={<AdminProjectTemplate />}/>
         <Route path='tasks' element={<AdminTasks />} />
+        <Route path='leads' element={<AdminLeads />} />
         <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}

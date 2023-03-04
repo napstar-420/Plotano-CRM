@@ -8,7 +8,7 @@ function CustomerUsers() {
     return (
         <div className='w-full h-full bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr]'>
           <header className='flex justify-between'>
-            <h2 className='text-lg font-subHeading font-medium text-mainBlue'>
+            <h2 className='text-xl font-subHeading font-medium text-mainBlue'>
               Users
             </h2>
             <div className='flex gap-2'>
@@ -25,7 +25,7 @@ function CustomerUsers() {
               <button className='px-2 bg-slate-200 hover:bg-slate-300 text-slate-500 hover:text-slate-700 text-xl'>
                 <CiFilter />
               </button>
-              <button className='self-center text-3xl text-pink-500 hover:text-pink-700'>
+              <button className='self-center ml-1 text-3xl scale-125 text-rose-400 hover:text-rose-500'>
                 <MdAddCircle />
               </button>
             </div>

@@ -10,7 +10,7 @@ function Tasks() {
   return (
     <div className='w-full h-full bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr]'>
       <header className='flex justify-between'>
-        <h2 className='text-lg font-subHeading font-medium text-mainBlue'>
+        <h2 className='text-xl font-subHeading font-medium text-mainBlue'>
           Tasks
         </h2>
         <div className='flex gap-2'>
