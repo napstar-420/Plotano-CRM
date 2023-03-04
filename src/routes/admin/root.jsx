@@ -119,7 +119,7 @@ SideNavLink.propTypes = {
 
 function AdminSideNav() {
   const [expand, setExpand] = useState('null');
-  const customerChildRoutes = [
+  const customerRoutes = [
     {
       name: 'Clients',
       route: '/admin/customers',
@@ -129,7 +129,7 @@ function AdminSideNav() {
       route: '/admin/customers-users',
     },
   ];
-  const projectsChildRoutes = [
+  const projectsRoutes = [
     {
       name: 'Projects',
       route: '/admin/projects',
@@ -139,6 +139,32 @@ function AdminSideNav() {
       route: '/admin/project-template',
     },
   ];
+  const salesRoutes = [
+    {
+      name: 'Invoices',
+      route: '/admin/invoices'
+    },
+    {
+      name: 'Payments',
+      route: '/admin/payments'
+    },
+    {
+      name: 'Estimates',
+      route: '/admin/estimates'
+    },
+    {
+      name: 'Products',
+      route: '/admin/products'
+    },
+    {
+      name: 'Expenses',
+      route: '/admin/expenses'
+    },
+    {
+      name: 'Proposals',
+      route: '/admin/proposals'
+    },
+  ]
   return (
     <nav id='side-nav' className='border-r-2 border-r-slate-200 pt-4'>
       {/* DASHBOARD */}
@@ -163,7 +189,7 @@ function AdminSideNav() {
             expand === 'Customers' ? 'max-h-28' : 'max-h-0'
           }`}
         >
-          {customerChildRoutes.map((child, index) => {
+          {customerRoutes.map((child, index) => {
             return (
               <NavLink
                 to={child.route}
@@ -200,7 +226,7 @@ function AdminSideNav() {
             expand === 'Projects' ? 'max-h-28' : 'max-h-0'
           }`}
         >
-          {projectsChildRoutes.map((child, index) => {
+          {projectsRoutes.map((child, index) => {
             return (
               <NavLink
                 to={child.route}
@@ -236,12 +262,42 @@ function AdminSideNav() {
         Icon={BsTelephoneInbound}
       />
       {/* SALES */}
-      <SideNavLink
-        to={'/admin/sales'}
-        name={'Sales'}
-        Icon={BsWallet2}
-        setExpand={setExpand}
-      />
+      <div className='grid'>
+        <div
+          onClick={() => expand === 'Sales' ? setExpand('null') : setExpand('Sales')}
+          className={`flex items-center w-full py-2 pl-8 pr-2 transition-all cursor-pointer select-none hover:bg-slate-100 text-slate-500`}
+        >
+          <BsWallet2 className='text-xl' />
+          <h2 className='ml-4 grow font-subHeading self-end'>Sales</h2>
+          <MdExpandMore className={`transition-transform ${expand === 'Sales' ? '' : '-rotate-90'}`}/>
+        </div>
+        <div
+          className={`grid overflow-hidden transition-all duration-500 ${
+            expand === 'Sales' ? 'max-h-96' : 'max-h-0'
+          }`}
+        >
+          {salesRoutes.map((child, index) => {
+            return (
+              <NavLink
+                to={child.route}
+                key={index}
+                className={({ isActive, isPending }) => {
+                  return `flex items-center text-sm py-2 pl-8 pr-2 ${
+                    isActive
+                      ? 'bg-blue-100 border-r-2 border-r-mainBlue text-mainBlue'
+                      : isPending
+                      ? 'bg-slate-100 text-slate-500'
+                      : 'hover:bg-slate-100 text-slate-500'
+                  } transition-all cursor-pointer select-none`;
+                }}
+              >
+                <BsDot className='text-xl'/>
+                <h2 className='ml-4 font-subHeading self-end'>{child.name}</h2>
+              </NavLink>
+            );
+          })}
+        </div>
+      </div>
       {/* SUBSCRIPTIONS */}
       <SideNavLink
         to={'/admin/subscriptions'}

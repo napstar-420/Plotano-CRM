@@ -20,11 +20,18 @@ import AdminProjects from './routes/admin/projects.jsx';
 import AdminProjectTemplate from './routes/admin/projectTemplate.jsx';
 import AdminTasks from './routes/admin/tasks.jsx';
 import AdminLeads from './routes/admin/leads.jsx';
+import AdminInvoices from './routes/admin/invoices.jsx';
+import AdminPayments from './routes/admin/payments';
+import AdminEstimates from './routes/admin/estimates.jsx';
+import AdminProducts from './routes/admin/products.jsx';
+import AdminExpenses from './routes/admin/expenses.jsx';
+import AdminProposals from './routes/admin/proposals.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' errorElement={<ErrorPage />}>
       <Route index element={<Root />}/>
+      {/* ADMIN ROUTES */}
       <Route path='admin' element={<AdminRoot />}>
         <Route index element={<AdminDashboard />} />
         <Route path='customers' element={<AdminCustomerClients />}/>
@@ -33,6 +40,12 @@ const router = createBrowserRouter(
         <Route path='project-template' element={<AdminProjectTemplate />}/>
         <Route path='tasks' element={<AdminTasks />} />
         <Route path='leads' element={<AdminLeads />} />
+        <Route path='invoices' element={<AdminInvoices />} />
+        <Route path='payments' element={<AdminPayments/>} />
+        <Route path='estimates' element={<AdminEstimates />} />
+        <Route path='products' element={<AdminProducts />} />
+        <Route path='expenses' element={<AdminExpenses />} />
+        <Route path='proposals' element={<AdminProposals />} />
         <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}
