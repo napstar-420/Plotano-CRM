@@ -36,7 +36,7 @@
         @apply border-b
     }
     th, td {
-        @apply py-5 px-2 text-[0.9rem]
+        @apply py-5 px-2 text-[0.9rem] w-max
     }
     td {
         @apply text-slate-500 font-subHeading

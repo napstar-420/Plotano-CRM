@@ -119,7 +119,7 @@ function TeamMembers() {
   }
 
   return (
-    <div className='w-full h-full overflow-scroll bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr] gap-4'>
+    <div className='w-full h-full bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr] gap-4'>
       <header className='flex justify-between items-center'>
         <h2 className='text-xl font-subHeading font-medium text-mainBlue'>
           Team Members
@@ -130,7 +130,7 @@ function TeamMembers() {
           </button>
         </div>
       </header>
-      <main className='py-8 bg-white rounded'>
+      <main className='w-full overflow-auto py-8 bg-white rounded'>
         <table className='w-full' cellPadding="0.5rem"  id="admin_team_members_table">
           <thead>
             <tr>
