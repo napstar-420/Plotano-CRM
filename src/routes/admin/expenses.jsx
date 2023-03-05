@@ -7,7 +7,7 @@ import NoResults from '../components/noResults';
 function Expenses() {
     return (
         <div className='w-full h-full bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr]'>
-          <header className='flex justify-between'>
+          <header className='flex justify-between items-center'>
             <h2 className='text-xl font-subHeading font-medium text-mainBlue'>
               Expenses
             </h2>

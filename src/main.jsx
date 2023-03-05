@@ -29,6 +29,7 @@ import AdminProposals from './routes/admin/proposals.jsx';
 import AdminSubscriptions from './routes/admin/subscriptions.jsx';
 import AdminSupport from './routes/admin/support.jsx';
 import AdminKnowledgeBase from './routes/admin/knowledgeBase.jsx';
+import AdminTeamMembers from './routes/admin/team-members';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -52,6 +53,9 @@ const router = createBrowserRouter(
         <Route path='subscriptions' element={<AdminSubscriptions />}/>
         <Route path='support' element={<AdminSupport />}/>
         <Route path='knowledgeBase' element={<AdminKnowledgeBase />}/>
+        <Route path='team-members' element={<AdminTeamMembers />}/>
+        <Route path='time-sheets' element={<div>Time Sheets</div>}/>
+        <Route path='settings' element={<div>Setting</div>}/>
         <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}

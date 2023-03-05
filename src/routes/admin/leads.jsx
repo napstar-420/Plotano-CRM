@@ -9,7 +9,7 @@ import { MdAddCircle } from 'react-icons/md';
 function Leads() {
   return (
     <div className='w-full overflow-scroll h-full bg-lightBlue py-2 px-4 grid grid-rows-[auto_1fr]'>
-      <header className='flex justify-between'>
+      <header className='flex justify-between items-center'>
         <h2 className='text-xl font-subHeading font-medium text-mainBlue'>
           Leads
         </h2>

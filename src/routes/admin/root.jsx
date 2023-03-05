@@ -165,6 +165,20 @@ function AdminSideNav() {
       route: '/admin/proposals'
     },
   ]
+  const othersRoutes = [
+    {
+      name: 'Team Members',
+      route: '/admin/team-members'
+    },
+    {
+      name: 'Time Sheets',
+      route: '/admin/time-sheets'
+    },
+    {
+      name: 'Settings',
+      route: '/admin/settings'
+    },
+  ]
   return (
     <nav id='side-nav' className='border-r-2 border-r-slate-200 pt-4'>
       {/* DASHBOARD */}
@@ -320,12 +334,42 @@ function AdminSideNav() {
         setExpand={setExpand}
       />
       {/* OTHERS */}
-      <SideNavLink
-        to={'/admin/other'}
-        name={'Other'}
-        Icon={CgMoreVerticalO}
-        setExpand={setExpand}
-      />
+      <div className='grid'>
+        <div
+          onClick={() => expand === 'Others' ? setExpand('null') : setExpand('Others')}
+          className={`flex items-center w-full py-2 pl-8 pr-2 transition-all cursor-pointer select-none hover:bg-slate-100 text-slate-500`}
+        >
+          <CgMoreVerticalO className='text-xl' />
+          <h2 className='ml-4 grow font-subHeading self-end'>Others</h2>
+          <MdExpandMore className={`transition-transform ${expand === 'Others' ? '' : '-rotate-90'}`}/>
+        </div>
+        <div
+          className={`grid overflow-hidden transition-all duration-500 ${
+            expand === 'Others' ? 'max-h-28' : 'max-h-0'
+          }`}
+        >
+          {othersRoutes.map((child, index) => {
+            return (
+              <NavLink
+                to={child.route}
+                key={index}
+                className={({ isActive, isPending }) => {
+                  return `flex items-center text-sm py-2 pl-8 pr-2 ${
+                    isActive
+                      ? 'bg-blue-100 border-r-2 border-r-mainBlue text-mainBlue'
+                      : isPending
+                      ? 'bg-slate-100 text-slate-500'
+                      : 'hover:bg-slate-100 text-slate-500'
+                  } transition-all cursor-pointer select-none`;
+                }}
+              >
+                <BsDot className='text-xl'/>
+                <h2 className='ml-4 font-subHeading self-end'>{child.name}</h2>
+              </NavLink>
+            );
+          })}
+        </div>
+      </div>
     </nav>
   );
 }
