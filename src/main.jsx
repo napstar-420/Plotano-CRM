@@ -31,6 +31,7 @@ import AdminSupport from './routes/admin/support.jsx';
 import AdminKnowledgeBase from './routes/admin/knowledgeBase.jsx';
 import AdminTeamMembers from './routes/admin/team-members';
 import AdminTimeSheets from './routes/admin/timesheets.jsx';
+import AdminSettingsRoot from './routes/admin/settingsRoot.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -56,7 +57,6 @@ const router = createBrowserRouter(
         <Route path='knowledgeBase' element={<AdminKnowledgeBase />}/>
         <Route path='team-members' element={<AdminTeamMembers />}/>
         <Route path='time-sheets' element={<AdminTimeSheets />}/>
-        <Route path='settings' element={<div>Setting</div>}/>
         <Route path='*' element={<div>404 Page not found</div>} />
       </Route>
       {/* Authentication Routes */}
@@ -64,6 +64,9 @@ const router = createBrowserRouter(
         <Route path='login' element={<Login type={'admin'}/>} />
         <Route path='sign-up' element={<SignUp type={'admin'}/>} />
         <Route path='forgotPassword' element={<ForgotPassword type={'admin'}/>} />
+        <Route path='settings' element={<AdminSettingsRoot />}>
+
+        </Route>
       </Route>
       <Route path='client'>
         <Route path='login' element={<Login type={'client'}/>}/>

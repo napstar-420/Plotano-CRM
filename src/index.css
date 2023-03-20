@@ -24,7 +24,7 @@
     /* Header Classes */
 
     .toggle-side-nav-btn {
-        @apply flex flex-col items-start justify-between w-6 h-5 cursor-pointer;
+        @apply flex flex-col items-start justify-between w-6 h-4 cursor-pointer;
     }
 
     .header-icon {
@@ -47,3 +47,24 @@
     font-size: 14px;
     color: purple;
 }
+
+#admin-side-nav::-webkit-scrollbar {
+    width: 0.35rem;
+    background-color: transparent;
+}
+
+#admin-side-nav::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 5px;
+}
+
+#admin_setting_nav::-webkit-scrollbar {
+    width: 0.35rem;
+    background-color: transparent;    
+}
+
+#admin_setting_nav::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 5px;
+}
+

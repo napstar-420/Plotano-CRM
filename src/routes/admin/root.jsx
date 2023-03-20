@@ -24,7 +24,7 @@ function Root() {
     <div className='w-full h-screen grid grid-cols-[auto_1fr] grid-rows-[auto_1fr]'>
       <div
         id='plotano-logo'
-        className='py-2 pl-8 pr-16 border-r-2 border-r-slate-300 border-b-2 border-2-slate-300 flex items-center justify-center'
+        className='py-2 pl-8 pr-16 border-r border-r-slate-300 border-b border-2-slate-300 flex items-center justify-center'
       >
         <div className='w-6 mr-4'>
           <img className='w-full' src={logo} alt='' />
@@ -47,14 +47,14 @@ function Root() {
 
 export default Root;
 
-function AdminHeader() {
+export function AdminHeader() {
   return (
-    <div id='admin-header' className='flex border-b-2 border-b-slate-200'>
-      <div className='flex-1 flex items-center justify-start p-2'>
+    <div id='admin-header' className='flex border-b border-b-slate-200'>
+      <div className='flex-1 flex items-center justify-start p-2 py-7'>
         <div className='toggle-side-nav-btn'>
-          <div className='w-full h-[3px] bg-slate-500'></div>
-          <div className='w-full h-[3px] bg-slate-500'></div>
-          <div className='w-full h-[3px] bg-slate-500'></div>
+          <div className='w-full h-[2px] bg-slate-400'></div>
+          <div className='w-full h-[2px] bg-slate-400'></div>
+          <div className='w-full h-[2px] bg-slate-400'></div>
         </div>
       </div>
       <div className='flex'>
@@ -180,7 +180,7 @@ function AdminSideNav() {
     },
   ]
   return (
-    <nav id='side-nav' className='border-r-2 border-r-slate-200 pt-4'>
+    <nav id='admin-side-nav' className='border-r border-r-slate-200 pt-4 overflow-y-auto'>
       {/* DASHBOARD */}
       <SideNavLink
         to={'/admin/'}
